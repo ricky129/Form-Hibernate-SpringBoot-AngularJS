@@ -1,0 +1,40 @@
+project-name/
+│
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/
+│   │   │       └── esempio/
+│   │   │           └── demo/
+│   │   │               ├── DemoApplication.java
+│   │   │               └── HelloWorldController.java
+│   │   └── resources/
+│   │       └── application.properties
+│
+└── pom.xml
+
+ANNOTAZIONI: Un'annotazione è un modo per aggiungere metadati a classi, metodi, variabili, parametri e pacchetti senza modificarne direttamente il comportamento. Le annotazioni non hanno alcun effetto diretto sulle operazioni che un programma esegue ma possono influenzare come il programma è trattato da framework e librerie. Sono ampiamente utilizzate in vari framework e librerie Java, come Spring e Hibernate. In questi contesti, hanno molteplici utilizzi, dalla configurazione di componenti (come servlet o servizi REST), alla mappatura di classi con tabelle di database, alla definizione di transazioni o policy di sicurezza.
+ 
+SPRING: Frameword per lo sviluppo di applicazioni Java, siano esse online che offline, molto usato per creare applicazioni web
+
+SPRINGBOOT: Tecnologia che facilita e velocizza la creazione di applicazioni Java, in modo particolare, semplifica lo sviluppo di applicazioni Spring, evitando di specificare tutte le configurazioni che erano prima obbligatorie nei progetti Spring (convention over Configuration) [processo abbastanza lungo che talvolta provocava errori] e sfruttando gli starter per impostare le dipendenze necessarie al progetto
+	    Permette la comunicazione fra back-end e front-end attraverso le REST API
+
+CONVENTION OVER CONFIGURATION: Meno configurazioni da impostare manualmente perchè già impostate a default [le configurazioni di Spring erano sempre uguali...]. Vengono specificate solo quelle configurazioni che si differenziano da quelle standard
+
+POSTMAN: Software utilizzato per simulare le chiamate al server sia GET che POST, PUT,....
+
+La classe HelloWorldController è un esempio di un controller in un'applicazione Spring Boot che gestisce le richieste web. In un progetto Spring Boot, i controller sono componenti che fanno parte della struttura Model-View-Controller (MVC) e sono responsabili della gestione del flusso di dati tra l'utente e il backend dell'applicazione.
+
+@RestController - Questa annotazione in Spring Boot è utilizzata per definire un controller e per indicare che il valore di ritorno dei metodi deve essere vincolato al corpo della risposta web. Questo significa che i dati ritornati dai metodi del controller vengono scritti direttamente nel corpo della risposta e possono gestire vari tipi di input, producendo diversi tipi di risposte in formato JSON o XML
+
+@GetMapping Annotation
+@GetMapping("/hello") - Questa annotazione è usata per gestire le richieste GET a un URL specificato, in questo caso, /hello. Mappa le richieste GET HTTP al metodo sayHello()
+
+La classe DemoApplication.java in un progetto Spring Boot è tipicamente il punto di ingresso dell'applicazione. Essa inizializza e configura il contesto di Spring e il lancio dell'applicazione web o di qualsiasi altro tipo di servizio
+
+@SpringBootApplication - È una delle annotazioni più importanti in Spring Boot. Aggrega altre annotazioni come @Configuration, @EnableAutoConfiguration, e @ComponentScan. Questa annotazione dice a Spring Boot di iniziare a cercare componenti, configurazioni, e servizi nel pacchetto corrente e nei pacchetti sottostanti
+
+Classe UserController: Quando un client (come un browser o un client REST come Postman) invia una richiesta GET a /user, Spring MVC invoca il metodo getUserDetails(). Il metodo crea e ritorna un nuovo oggetto User, che viene poi automaticamente serializzato in JSON dalla libreria di serializzazione configurata in Spring Boot. La conversione da un oggetto Java a JSON (serializzazione) non richiede codice aggiuntivo; è gestita internamente da Spring MVC
+
+Politiche CORS(Cross-Origin Resource Sharing): Il browser tende a bloccare quello che non proviene dalla sorgente dell'applicazione. Nel nostro caso essendo front-end e back-end separati, è necessario avere delle autorizzazioni speciali. Questo neccanismo autorizza lo scambio e il trasferimento di dati fra server e browser ed è quindi necessario abilitare le politiche CORS nella nostra applicazione Spring Boot. Bisogna creare una classe di configurazione nel package security e fornirgli l'annotazione @Configuration

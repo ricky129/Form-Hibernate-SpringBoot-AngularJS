@@ -1,0 +1,5 @@
+com\esempio\demo\pages\controller\FormController.class
+com\esempio\demo\pages\repository\IUserRepository.class
+com\esempio\demo\pages\service\UserService.class
+com\esempio\demo\pages\entity\User.class
+com\esempio\demo\DemoApplication.class
