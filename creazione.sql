@@ -1,7 +1,8 @@
 CREATE DATABASE miodb;
 USE miodb;
 CREATE TABLE users (
-    id BIGINT,
-    name varchar(10),
-    email varchar(10)
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name char(20),
+    email varchar(50),
+    password varchar(255)
     );
