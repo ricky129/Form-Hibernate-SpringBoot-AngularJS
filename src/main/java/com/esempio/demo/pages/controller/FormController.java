@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 public class FormController {
@@ -18,15 +19,25 @@ public class FormController {
         this.userService = userService;
     }
 
+    @GetMapping("/")
+    public String test() {
+        return "test";
+    }
+    
     @GetMapping("/form")
     public String showForm() {
-        return "form"; // Assuming you have a form.html template in your resources/templates directory
+        return "form";
     }
 
     @PostMapping("/save")
-    public String saveUser(@RequestParam Long id, @RequestParam String name, @RequestParam String email) {
+    public RedirectView saveUser(@RequestParam Long id, @RequestParam String name, @RequestParam String email, @RequestParam String password)) {
         User user = new User(id, name, email);
         userService.saveUser(user);
-        return "redirect:/success"; // Redirect to a success page
+        return new RedirectView("/success"); // Redirect to a success page
+    }
+    
+    @GetMapping("/success")
+    public String success() {
+        return "success"; // This should match the name of the Thymeleaf template (success.html)
     }
 }
