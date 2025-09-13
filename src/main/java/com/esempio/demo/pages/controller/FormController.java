@@ -52,8 +52,8 @@ public class FormController {
     }
 
     @GetMapping("/")
-    public String test() {
-        return "test";
+    public String form() {
+        return "form";
     }
 
     @GetMapping("/form")
